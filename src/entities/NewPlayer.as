@@ -9,10 +9,12 @@ package entities
 	
 	public class NewPlayer extends Entity
 	{
-		private var speed : Number = 100.0;
+		private var speed : Number = 150.0;
 		private var diagMov : Boolean = false;
 		private var lastlastKey : int = 0;
 		public var direction : String = "RIGHT";
+		public var vx : Number = 0.0;
+		public var vy : Number = 0.0;
 		
 		public function NewPlayer()
 		{
@@ -33,7 +35,7 @@ package entities
 			{
 				if (Input.pressed(Key.SPACE))
 				{
-					world.add(new Match(x + 8, y + 8, direction));
+					world.add(new Match(x + 8, y + 8, this));
 				}
 				
 				if (Input.check(Key.UP) || Input.check(Key.DOWN) || Input.check(Key.LEFT) || Input.check(Key.RIGHT))
@@ -41,26 +43,38 @@ package entities
 					{
 						case "LEFT":
 							direction = "LEFT";
-							x -= speed * FP.elapsed;
+							vx = -speed;
+							vy = 0.0;
 							break;
 						case "RIGHT":
 							direction = "RIGHT";
-							x += speed * FP.elapsed;
+							vx = speed;
+							vy = 0.0;
 							break;
 						case "DOWN":
 							direction = "DOWN";
-							y += speed * FP.elapsed;
+							vx = 0.0;
+							vy = speed;
 							break;
 						case "UP":
 							direction = "UP";
-							y -= speed * FP.elapsed;
+							vx = 0.0;
+							vy = -speed;
 							break;	
 					}
+				else
+				{
+					vx = 0.0;
+					vy = 0.0;
+				}
 					
 				if(Input.lastKey != Key.SPACE)
 				{
 					lastlastKey = Input.lastKey;
 				}
+				
+				x += vx * FP.elapsed;
+				y += vy * FP.elapsed;
 			}
 		}
 	}
