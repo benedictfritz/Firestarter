@@ -1,5 +1,6 @@
 package worlds
 {
+	import emitters.FireEmitter;
 	import entities.NewPlayer;
     import net.flashpunk.FP;
     import net.flashpunk.World;
@@ -18,6 +19,7 @@ package worlds
 		{
 			Util.addCenteredText("Welcome to the new world!", this, 10);
 			add(new NewPlayer);
+			add(new FireEmitter);
 		}
     }
 }

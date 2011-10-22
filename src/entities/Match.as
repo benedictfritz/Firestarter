@@ -19,8 +19,10 @@ package entities
 		{
 			x = newX + 4;
 			y = newY + 4;
+			
 			var img:Image = Image.createRect(8, 4, 0xFF0000);
-			graphic = img;			
+			graphic = img;		
+			
 			switch(creator.direction)
 			{
 				case "LEFT":
