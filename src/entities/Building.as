@@ -22,6 +22,7 @@ package entities
 
 		private var lifeTotal : Number = 100.0;
 		private var degrader : Number = 0.0;
+		private var degraderInc : Number = 0.2;
 		private var speed : Number = 50.0;
 		private var gravity : Number = 9.8;
 		private var vx : Number = 0.0;
@@ -29,8 +30,8 @@ package entities
 		private var time : Number = 0.0;
 		private var rotator : Number = 0.0;
 		private var fireCnt : int = 0;
-		private var fireMax : int = 5;
-		private var blowUp : Boolean = true;
+		private var emitterF : Entity;
+		private var emitterList : Array = new Array();
 		
 	    public function Building(x:Number, y:Number, buildingType:String) 
 		{
@@ -70,23 +71,29 @@ package entities
 			var match:Match = collide("match", x, y) as Match;
 			var fireC:FireChunk = collide("firechunk", x, y) as FireChunk;
 			
-			if ((match || fireC) && fireCnt < fireMax)
+			if (match || fireC)
 			{
 				if (match)
 					world.remove(match);
 				else
 					world.remove(fireC);
 					
-				world.add(new FireEmitter(x + (Math.random() * this.width), y + (Math.random() * this.height)));
-				degrader += 0.5;
+				emitterF = new FireEmitter(x + (Math.random() * this.width), y + (Math.random() * this.height));
+				emitterList.push(emitterF);
+				world.add(emitterF);
+				degrader += degraderInc;
 				fireCnt++;
 			}
 			
-			if (fireCnt == fireMax && blowUp)
+			if (lifeTotal <= 0)
 			{
-				blowUp = false;
-				world.add(new FireChunk(x+this.width/2, y+this.height/2, Math.floor(Math.random() * 4)));
+				world.add(new FireChunk(x + this.width / 2, y + this.height / 2, Math.floor(Math.random() * 4)));
+				for (var i:int = 0; i < fireCnt; i++)
+					world.remove(emitterList[i]);
+				world.remove(this);
 			}
+			
+			lifeTotal -= degrader;
 		}
 	}
 }
