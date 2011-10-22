@@ -30,7 +30,7 @@ package entities
 		private var rotator : Number = 0.0;
 		private var fireCnt : int = 0;
 		private var fireMax : int = 5;
-		//private var emitterList : Array;
+		private var blowUp : Boolean = true;
 		
 	    public function Building(x:Number, y:Number, buildingType:String) 
 		{
@@ -63,7 +63,6 @@ package entities
 		    this.y = y;
 		    
 		    type = "building";
-		    //emitterList = new Array();
 		}
 		
 		override public function update():void
@@ -78,21 +77,16 @@ package entities
 				else
 					world.remove(fireC);
 					
-				var tmp : Entity = world.add(new FireEmitter(x + (Math.random() * this.width), y + (Math.random() * this.height)));
-				//emitterList.push(tmp);
+				world.add(new FireEmitter(x + (Math.random() * this.width), y + (Math.random() * this.height)));
 				degrader += 0.5;
 				fireCnt++;
 			}
 			
-			if (lifeTotal <= 0)
+			if (fireCnt == fireMax && blowUp)
 			{
-				world.remove(this);
-				//for (var i : int = 0; i < emitterList.length; i++)
-					//world.remove(emitterList[i]);
+				blowUp = false;
 				world.add(new FireChunk(x+this.width/2, y+this.height/2, Math.floor(Math.random() * 4)));
 			}
-			
-			lifeTotal -= degrader;
 		}
 	}
 }
