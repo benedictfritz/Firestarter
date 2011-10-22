@@ -12,6 +12,7 @@
   <tilesets>
     <tileset name="Roads" image="images/Road_Tiles.png" tileHeight="32" tileWidth="32" />
     <tileset name="BuildingL" image="images/BuildingL.png" tileHeight="192" tileWidth="192" />
+    <tileset name="BuildingM" image="images/BuildingM.png" tileHeight="128" tileWidth="128" />
   </tilesets>
 
   <layers>
