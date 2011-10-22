@@ -45,6 +45,12 @@ package emitters
 			
 			totalTime += FP.elapsed;
 		}
+		
+		override public function render():void {
+			if (onCamera) {
+				super.render();
+			}
+		}
 	}
 
 }

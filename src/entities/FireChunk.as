@@ -55,5 +55,11 @@ package entities
 			
 			time += FP.elapsed;
 		}
+		
+		override public function render():void {
+			if (onCamera) {
+				super.render();
+			}
+		}
 	}
 }

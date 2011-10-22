@@ -115,5 +115,11 @@ package entities
 			if (onFire)
 				burningTime += FP.elapsed;
 		}
+		
+		override public function render():void {
+			if (onCamera) {
+				super.render();
+			}
+		}
 	}
 }
