@@ -13,7 +13,7 @@ package worlds
 
     public class WorldOne extends World
     {
-	[Embed(source="../../levels/LevelOne.oel", mimeType="application/octet-stream")]
+	[Embed(source="../../levels/JerrysTest.oel", mimeType="application/octet-stream")]
 	    private static const LEVEL_ONE:Class;
 
 	override public function begin():void
