@@ -1,5 +1,7 @@
 package entities 
 {
+	import emitters.FireEmitter;
+	import emitters.FireParticle;
 	import entities.NewPlayer;
 	import net.flashpunk.Entity;
 	import net.flashpunk.graphics.Image;
@@ -7,6 +9,7 @@ package entities
 	
 	public class Match extends Entity
 	{
+		private var img:Image = Image.createRect(8, 4, 0xFF0000);
 		private var lifeTime : Number = 0.60;
 		private var speed : Number = 50.0;
 		private var gravity : Number = 9.8;
@@ -17,11 +20,12 @@ package entities
 		
 		public function Match(newX:Number, newY:Number, creator:NewPlayer) 
 		{
-			x = newX + 4;
-			y = newY + 4;
+			x = newX+img.width/2, y = newY+img.height/2;
 			
-			var img:Image = Image.createRect(8, 4, 0xFF0000);
 			graphic = img;		
+			
+			setHitbox(img.width, img.height);
+			type = "match";
 			
 			switch(creator.direction)
 			{
@@ -50,7 +54,7 @@ package entities
 		{
 			if (time >= lifeTime)
 				world.remove(this);
-			
+						
 			Image(graphic).angle += rotator * FP.elapsed;
 			
 			x += vx * FP.elapsed;
