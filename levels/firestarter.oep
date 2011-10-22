@@ -1,0 +1,20 @@
+<project>
+  <name>Firestarter</name>
+
+  <settings>
+    <defaultWidth> 3200 </defaultWidth>
+    <defaultHeight> 2400 </defaultHeight>
+  </settings>
+
+  <objects>
+  </objects>
+
+  <tilesets>
+    <tileset name="tiles" image="images/tiles.png" tileHeight="32" tileWidth="32" />
+  </tilesets>
+
+  <layers>
+    <tiles name="OurTiles" gridSize="32" />
+  </layers>
+
+</project>
