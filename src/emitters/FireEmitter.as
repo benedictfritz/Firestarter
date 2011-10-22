@@ -14,7 +14,7 @@ package emitters
 		
 		override public function update():void 
 		{
-			if (Math.floor(Math.random() * 20) % 18 == 0)
+			if (Math.floor(Math.random() * 30) % 28 == 0)
 				world.add(new FireParticle(x, y));
 		}
 	}
