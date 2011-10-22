@@ -1,17 +1,27 @@
 package 
 {
-    import net.flashpunk.Engine;
-    import net.flashpunk.FP;
-    import worlds.Menu;
-
-    [SWF(width = "800", height = "600")]
-
-	public class Main extends Engine
+	import flash.display.Sprite;
+	import flash.events.Event;
+	
+	/**
+	 * ...
+	 * @author jno
+	 */
+	public class Main extends Sprite 
 	{
-	    public function Main()
-	    {
-		super(640, 480, 60);
-		FP.world = new Menu;
-	    }
+		
+		public function Main():void 
+		{
+			if (stage) init();
+			else addEventListener(Event.ADDED_TO_STAGE, init);
+		}
+		
+		private function init(e:Event = null):void 
+		{
+			removeEventListener(Event.ADDED_TO_STAGE, init);
+			// entry point
+		}
+		
 	}
+	
 }
