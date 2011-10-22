@@ -1,5 +1,6 @@
 package worlds
 {
+	import entities.NewPlayer;
     import net.flashpunk.FP;
     import net.flashpunk.World;
     import net.flashpunk.Entity;
@@ -7,15 +8,16 @@ package worlds
 
     import util.Util;
 
-    public class TestWorld extends World
+    public class NewWorld extends World
     {
-	private var 
-	    welcomeText:Text,
-	    welcomeTextEntity:Entity;
+		private var 
+			welcomeText:Text,
+			welcomeTextEntity:Entity;
 
-	public function TestWorld()
-	{
-	    Util.addCenteredText("Welcome to the new world!", this, 10);
-	}
+		public function NewWorld()
+		{
+			Util.addCenteredText("Welcome to the new world!", this, 10);
+			add(new NewPlayer);
+		}
     }
 }
