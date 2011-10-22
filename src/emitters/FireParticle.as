@@ -7,14 +7,14 @@ package emitters
 	
 	public class FireParticle extends Entity
 	{
-		private var img:Image = Image.createRect(4, 4, 0xFF0000);
+		private var img:Image = Image.createRect(8, 8, 0xFF0000);
 		private var vx : Number = 0.0;
 		private var vy : Number = -20.0;
+		private var fadeAmt : Number = 0.02;
 		
 		public function FireParticle(newX:Number, newY:Number) 
 		{
-			x = newX;
-			y = newY;
+			x = newX-img.width/2, y = newY-img.height/2;
 			
 			graphic = img;	
 			
@@ -23,7 +23,7 @@ package emitters
 		
 		override public function update():void 
 		{
-			img.alpha -= 0.01;
+			img.alpha -= fadeAmt;
 			
 			if (img.alpha <= 0.0)
 				world.remove(this);
