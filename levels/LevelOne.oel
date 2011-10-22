@@ -1,0 +1,41 @@
+<level>
+  <width>1600</width>
+  <height>1200</height>
+  <Roads set="Roads">
+    <tile tx="0" ty="0" x="624" y="384"/>
+    <tile tx="0" ty="0" x="624" y="416"/>
+    <tile tx="0" ty="0" x="624" y="448"/>
+    <tile tx="0" ty="0" x="624" y="480"/>
+    <tile tx="0" ty="0" x="624" y="512"/>
+    <tile tx="0" ty="0" x="624" y="544"/>
+    <tile tx="0" ty="0" x="624" y="576"/>
+    <tile tx="0" ty="0" x="624" y="608"/>
+    <tile tx="0" ty="0" x="624" y="640"/>
+    <tile tx="0" ty="0" x="624" y="672"/>
+    <tile tx="0" ty="0" x="624" y="352"/>
+    <tile tx="0" ty="0" x="624" y="320"/>
+    <tile tx="0" ty="0" x="624" y="288"/>
+    <tile tx="0" ty="0" x="624" y="256"/>
+    <tile tx="0" ty="0" x="192" y="64"/>
+    <tile tx="0" ty="0" x="192" y="96"/>
+    <tile tx="0" ty="0" x="192" y="128"/>
+    <tile tx="0" ty="0" x="192" y="160"/>
+    <tile tx="0" ty="0" x="192" y="192"/>
+    <tile tx="0" ty="0" x="192" y="224"/>
+    <tile tx="0" ty="0" x="192" y="256"/>
+    <tile tx="0" ty="0" x="192" y="288"/>
+    <tile tx="0" ty="0" x="192" y="320"/>
+    <tile tx="0" ty="0" x="192" y="352"/>
+    <tile tx="0" ty="0" x="192" y="384"/>
+    <tile tx="0" ty="0" x="192" y="416"/>
+    <tile tx="0" ty="0" x="192" y="448"/>
+  </Roads>
+  <Objects>
+    <buildingL x="0" y="0"/>
+    <playerStart x="192" y="32"/>
+    <buildingM x="128" y="192"/>
+    <buildingS x="64" y="192"/>
+    <buildingS2v x="0" y="192"/>
+    <buildingS2h x="64" y="256"/>
+  </Objects>
+</level>

@@ -17,13 +17,15 @@ package entities
 		public var vx : Number = 0.0;
 		public var vy : Number = 0.0;
 		
-		public function NewPlayer()
-		{
-			graphic = img;
+	    public function NewPlayer(x:int, y:int)
+	    {
+		this.x = x;
+		this.y = y;
+		graphic = img;
 			
-			setHitbox(img.width, img.height);
-			type = "player";
-		}
+		setHitbox(img.width, img.height);
+		type = "player";
+	    }
 
 		override public function update():void
 		{

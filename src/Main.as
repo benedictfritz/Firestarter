@@ -2,7 +2,7 @@ package
 {
 	import net.flashpunk.Engine;
 	import net.flashpunk.FP;
-	import worlds.NewWorld;
+	import worlds.WorldOne;
 
 	[SWF(width="800", height="600")]
 
@@ -12,12 +12,7 @@ package
 		{
 			super(800, 600, 60, false);
 			FP.console.enable();
-			FP.world = new NewWorld;
-		}
-
-		override public function init():void
-		{
-			trace("FlashPunk has started successfully!");
+			FP.world = new WorldOne;
 		}
 	}
 }
