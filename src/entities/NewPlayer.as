@@ -1,14 +1,19 @@
 package entities
 {
-	import entities.Match;
 	import net.flashpunk.Entity;
 	import net.flashpunk.graphics.Image;
 	import net.flashpunk.FP;
 	import net.flashpunk.utils.Input;
 	import net.flashpunk.utils.Key;
+	import net.flashpunk.graphics.Spritemap;
+
+	import entities.Match;
 	
 	public class NewPlayer extends Entity
 	{
+	    [Embed(source = '../../levels/images/PlayerSprites.png')]
+		private const PLAYER:Class;
+	    public var sprPlayer:Spritemap = new Spritemap(PLAYER, 16, 16);
 		private var img:Image = Image.createCircle(8, 0xFFFFFF);
 		private var speed : Number = 150.0;
 		private var diagMov : Boolean = false;
@@ -21,8 +26,11 @@ package entities
 	    {
 		this.x = x;
 		this.y = y;
-		graphic = img;
+		graphic = sprPlayer;
 			
+		sprPlayer.add("stand", [0], 1);
+		sprPlayer.add("runRight", [1, 2, 3, 2, 1], 10);
+		sprPlayer.add("runLeft", [6, 5, 4, 5, 6], 10);
 		setHitbox(img.width, img.height);
 		type = "player";
 	    }
@@ -65,11 +73,13 @@ package entities
 					switch(Key.name(lastlastKey))
 					{
 						case "LEFT":
+						    sprPlayer.play("runLeft");
 							direction = "LEFT";
 							vx = -speed;
 							vy = 0.0;
 							break;
 						case "RIGHT":
+						    sprPlayer.play("runRight");
 							direction = "RIGHT";
 							vx = speed;
 							vy = 0.0;
@@ -85,16 +95,34 @@ package entities
 							vy = -speed;
 							break;	
 					}
-				else
+				else {
+				    sprPlayer.play("stand");
 					vx = 0.0, vy = 0.0; //Clear the velocitys if not moving
+				}
 					
 				//Save the key before space so we don't stop moving when hitting space
 				if(Input.lastKey != Key.SPACE)
 					lastlastKey = Input.lastKey;
 				
 				//Apply the velocities
-				x += vx * FP.elapsed;
-				y += vy * FP.elapsed;
+				// x += vx * FP.elapsed;
+				// y += vy * FP.elapsed;
+				var xSpeed:Number = vx * FP.elapsed;
+				var ySpeed:Number = vy * FP.elapsed;
+
+				// pixel-perfect horizontal collision
+				for (var i:int = 0; i < Math.abs(xSpeed); i+=1) {
+				    if (!collide("building", x+FP.sign(xSpeed), y)) {
+					x += FP.sign(xSpeed);
+				    }
+				}
+
+				// pixel-perfect vertical collision
+				for (var j:int = 0; j < Math.abs(ySpeed); j+=1) {
+				    if (!collide("building", x, y+FP.sign(ySpeed))) {
+					y += FP.sign(ySpeed);
+				    }
+				}
 			}
 		}
 	}
