@@ -33,9 +33,10 @@
   <Objects>
     <buildingL x="0" y="0"/>
     <playerStart x="192" y="32"/>
-    <buildingM x="128" y="192"/>
     <buildingS x="64" y="192"/>
     <buildingS2v x="0" y="192"/>
     <buildingS2h x="64" y="256"/>
+    <buildingM x="64" y="320"/>
+    <buildingS x="128" y="192"/>
   </Objects>
 </level>
