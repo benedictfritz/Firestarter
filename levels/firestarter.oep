@@ -9,7 +9,7 @@
   <objects>
     <object name="playerStart" image="images/player.png" height="32" width="32"/>
     <object name="buildingL" image="images/BuildingL.png" height="192" width="192"/>
-    <object name="buildingM" image="images/BuildingL.png" height="128" width="128"/>
+    <object name="buildingM" image="images/BuildingM.png" height="128" width="128"/>
     <object name="buildingS" image="images/buildingS.png" height="64" width="64"/>
     <object name="buildingS2h" image="images/buildingS2h.png" height="64" width="128"/>
     <object name="buildingS2v" image="images/buildingS2v.png" height="128" width="64"/>
