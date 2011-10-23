@@ -59,7 +59,7 @@ package entities
 			if (road && !ignited)
 			{
 				ignited = true;
-				world.add(new StreetFireEmitter(road.x+16, road.y+16));
+				world.add(new StreetFireEmitter(road.x+16, road.y+16, road));
 			}
 				
 			x += vx * FP.elapsed;
