@@ -31,7 +31,7 @@ package entities
 	    }
 	    else {
 		layer = 100;
-		if(Math.floor(Math.random() * 1000) == 3) {
+		if(Math.floor(Math.random() * 5000) == 3) {
 		    alive = true;
 		}
 		return;

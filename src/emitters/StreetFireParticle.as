@@ -37,8 +37,11 @@ package emitters
 			else if (totalTime >= 0.75)
 				img.color = 0x330000;
 			
-			if (/*img.alpha <= 0.0 || */img.scale <= 0.0)
-				world.remove(this);
+			if (/*img.alpha <= 0.0 || */img.scale <= 0.0) {
+			    if(FP.world) {
+				FP.world.remove(this);
+			    }
+			}
 			
 			x += vx * FP.elapsed;
 			y += vy * FP.elapsed;

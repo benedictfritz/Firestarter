@@ -2,6 +2,7 @@ package entities
 {
 	import emitters.StreetFireEmitter;
     import net.flashpunk.Entity;
+    import net.flashpunk.Sfx;
     import net.flashpunk.graphics.Image;
     import net.flashpunk.FP;
     import net.flashpunk.utils.Input;
@@ -16,6 +17,9 @@ package entities
     {
 		[Embed(source = '../../levels/images/FiremanChar.png')]
 			private const FFMAN:Class;
+		[Embed(source = '../../RealSfx/hurt.mp3')]
+			private const DEATH:Class;
+	public var deathSound:Sfx = new Sfx(DEATH);
 		public var sprPlayer:Spritemap = new Spritemap(FFMAN, 16, 16);
 		private var img:Image = Image.createCircle(8, 0xFFFFFF);
 		private var speed : Number = 50.0;
@@ -180,6 +184,7 @@ package entities
 					
 				var player:NewPlayer = collide("player", x, y) as NewPlayer;
 				if (player) {
+				    deathSound.play();
 					player.dead = true;
 				}
 			}

@@ -14,7 +14,7 @@ package entities
 	public function MatchCount() 
 	{
 	    layer = -20;
-	    count = 0;
+	    count = 2;
 	    text = new Text(String(count));
 	    text.color = 0xFFFFFF;
 	    text.size = 16;
