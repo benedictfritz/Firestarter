@@ -27,7 +27,6 @@ package worlds
 		
 		public function Menu() 
 		{
-			Util.addCenteredText("Push Space Bar to Start", this, FP.halfHeight);
 			this.addGraphic(mainMenu, 20, 0, 0);
 		}
 		
