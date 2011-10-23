@@ -9,6 +9,7 @@ package entities
     import net.flashpunk.graphics.Spritemap;
     import net.flashpunk.World;
     import entities.Match;
+	import worlds.EndGame;
 
     import worlds.WorldOne;
 	
@@ -181,7 +182,7 @@ package entities
 			if (Image(graphic).alpha <= 0.0)
 			{
 				FP.world.removeAll();
-				FP.world = new WorldOne();
+				FP.world = new EndGame(WorldOne(FP.world).score.getScore());
 			}
 		}
 	}

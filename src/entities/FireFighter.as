@@ -18,7 +18,8 @@ package entities
 			private const FFMAN:Class;
 		public var sprPlayer:Spritemap = new Spritemap(FFMAN, 16, 16);
 		private var img:Image = Image.createCircle(8, 0xFFFFFF);
-		private var speed : Number = 100.0;
+		private var speed : Number = 50.0;
+		private var chaseRange : Number = 30.0;
 		private var ppX : uint;
 		private var ppY : uint;
 		private var myX : uint;
@@ -136,45 +137,45 @@ package entities
 				
 				if (ppX > myX && WorldOne(FP.world).tileMap[myY][myX + 1] == 1)
 				{
-					x += 50 * FP.elapsed;
+					x += speed * FP.elapsed;
 				}
 				else if (ppX < myX && WorldOne(FP.world).tileMap[myY][myX - 1] == 1)
 				{
-					x -= 50 * FP.elapsed;
+					x -= speed * FP.elapsed;
 				}
 				if (ppY > myY && WorldOne(FP.world).tileMap[myY + 1][myX] == 1)
 				{
-					y += 50 * FP.elapsed;
+					y += speed * FP.elapsed;
 				}
 				else if (ppY < myY && WorldOne(FP.world).tileMap[myY - 1][myX] == 1)
 				{
-					y -= 50 * FP.elapsed;
+					y -= speed * FP.elapsed;
 				}
 				
 				myMap[myY][myX] = 0;
 							
 				if (myMap[myY][myX] == 0 && myMap[myY][myX + 1] == 1)
 				{
-					x += 50 * FP.elapsed;				
+					x += speed * FP.elapsed;				
 				}
 				if (myMap[myY][myX] == 0 && myMap[myY][myX - 1] == 1)
 				{
-					x -= 50 * FP.elapsed;
+					x -= speed * FP.elapsed;
 				}		
 				if (myMap[myY][myX] == 0 && myMap[myY+1][myX] == 1)
 				{
-					y += 50 * FP.elapsed;				
+					y += speed * FP.elapsed;				
 				}
 				if (myMap[myY][myX] == 0 && myMap[myY-1][myX] == 1)
 				{
-					y -= 50 * FP.elapsed;
+					y -= speed * FP.elapsed;
 				}
 				
 				if (myMap[myY + 1][myX] == 0 && myMap[myY - 1][myX] == 0 && myMap[myY][myX - 1] == 0 && myMap[myY][myX + 1] == 0)
 					WorldOne(FP.world).remapMap(myMap);
 				
-				if (WorldOne(FP.world).player.x <= x + 30 && WorldOne(FP.world).player.x >= x - 30 &&
-					WorldOne(FP.world).player.y <= y + 30 && WorldOne(FP.world).player.y >= y - 30)
+				if (WorldOne(FP.world).player.x <= x + chaseRange && WorldOne(FP.world).player.x >= x - chaseRange &&
+					WorldOne(FP.world).player.y <= y + chaseRange && WorldOne(FP.world).player.y >= y - chaseRange)
 					moveTowards(WorldOne(FP.world).player.x, WorldOne(FP.world).player.y, speed*FP.elapsed);
 					
 				var player:NewPlayer = collide("player", x, y) as NewPlayer;

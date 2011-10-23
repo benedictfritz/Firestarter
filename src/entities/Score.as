@@ -38,5 +38,10 @@ package entities
 	    text.size = 16;
 	    graphic = text;
 	}
+	
+	public function getScore():Number
+	{
+		return score;
     }
+}
 }
