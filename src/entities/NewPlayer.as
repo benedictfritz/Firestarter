@@ -9,6 +9,8 @@ package entities
     import net.flashpunk.graphics.Spritemap;
 	import net.flashpunk.World;
     import entities.Match;
+
+    import worlds.WorldOne;
 	
     public class NewPlayer extends Entity
     {
@@ -168,7 +170,7 @@ package entities
 		if (dead)
 		{
 			FP.world.removeAll();
-			FP.world.begin();
+			FP.world = new WorldOne();
 		}
 	}
     }

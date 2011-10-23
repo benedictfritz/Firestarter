@@ -19,13 +19,10 @@ package worlds
     {
 	[Embed(source="../../levels/JerrysTest.oel", mimeType="application/octet-stream")]
 	    private static const LEVEL_ONE:Class;
-	[Embed(source="../../RealSFX/Jamaican.mp3")]
-	    private static const JAMAICAN:Class;
-
-	private var jamaican:Sfx = new Sfx(JAMAICAN);
 
 	override public function begin():void
 	{
+	    trace("Test");
 	    add(new HUDright);
 	    add(new HUDleft);
 	    add(new Score);
@@ -80,7 +77,6 @@ package worlds
 	    {
 		add(new NewPlayer(dataElement.@x, dataElement.@y));
 	    }
-	    jamaican.play();
 	}
     }
 }
