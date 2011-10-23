@@ -15,7 +15,7 @@ package entities
 
 		private var sprRubble:Spritemap = new Spritemap(RUBBLE, 16, 16);
 		private var lifeTime : Number = 1.0;
-		private var speed : Number = 75.0;
+		private var speed : Number = 100.0;
 		private var gravity : Number = 9.8;
 		private var vx : Number = 0.0;
 		private var vy : Number = 0.0;
@@ -40,8 +40,10 @@ package entities
 		    setHitbox(16, 16);
 		    type = "firechunk";
 			
-		    vx = (Math.random() * speed*2) - speed;
-		    vy = (Math.random() * speed*2) - speed;
+			while(vx > -50.0 && vx < 50)
+				vx = (Math.random() * speed * 2) - speed;
+			while(vy > -50.0 && vy < 50)
+				vy = (Math.random() * speed*2) - speed;
 		}
 		
 		override public function update():void

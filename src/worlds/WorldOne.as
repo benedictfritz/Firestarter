@@ -175,7 +175,8 @@ package worlds
 	    {
 		player = new NewPlayer(dataElement.@x, dataElement.@y);
 		add(player);
-		add(new FireFighter(dataElement.@x, dataElement.@y));
+			add(new FireFighter(dataElement.@x, dataElement.@y));
+			add(new FireFighter(dataElement.@x, dataElement.@y));
 	    }
 
 	    dataList = levelData.Objects.matchSpawn;
@@ -185,7 +186,7 @@ package worlds
 	    }
 
 	}
-		public function remapMap():void
+		public function remapMap(tmp:Array):void
 		{
 			var rawData:ByteArray = new LEVEL_ONE;
 			var dataString:String = rawData.readUTFBytes(rawData.length);
@@ -200,10 +201,10 @@ package worlds
 			{
 				var tmpX : uint = int(dataElement.@x/16);
 				var tmpY : uint = int(dataElement.@y / 16);
-				tileMap[tmpY][tmpX] = 1;
-				tileMap[tmpY+1][tmpX] = 1;
-				tileMap[tmpY][tmpX+1] = 1;
-				tileMap[tmpY+1][tmpX+1] = 1;
+				tmp[tmpY][tmpX] = 1;
+				tmp[tmpY+1][tmpX] = 1;
+				tmp[tmpY][tmpX+1] = 1;
+				tmp[tmpY+1][tmpX+1] = 1;
 			}
 		}
 	

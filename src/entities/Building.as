@@ -170,9 +170,9 @@ package entities
 			
 			if (lifeTotal <= 0)
 			{
-				world.add(new FireChunk(x + this.width / 2, y + this.height / 2));
-				world.add(new FireChunk(x + this.width / 2, y + this.height / 2));
-				world.add(new FireChunk(x + this.width / 2, y + this.height / 2));
+				for (var p:int = 0; p < chunks; p++)
+					world.add(new FireChunk(x + this.width / 2, y + this.height / 2));
+				
 				for (var i:int = 0; i < fireCnt; i++)
 				{
 					world.remove(emitterList[i]);
