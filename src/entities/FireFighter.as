@@ -1,37 +1,35 @@
-package worlds
+package entities
 {
-	import entities.FireFighter;
-    import flash.utils.ByteArray;
-
-    import net.flashpunk.FP;
-    import net.flashpunk.Sfx;
-    import net.flashpunk.World;
     import net.flashpunk.Entity;
-    import net.flashpunk.graphics.Text;
-
-    import entities.Building;
-    import entities.Road;
-    import entities.NewPlayer;
-    import entities.HUDleft;
-    import entities.HUDright;
-    import entities.Score;
-
-    public class WorldOne extends World
+    import net.flashpunk.graphics.Image;
+    import net.flashpunk.FP;
+    import net.flashpunk.utils.Input;
+    import net.flashpunk.utils.Key;
+    import net.flashpunk.graphics.Spritemap;
+	import net.flashpunk.World;
+	import worlds.WorldOne;
+    import entities.Match;
+	
+    public class FireFighter extends Entity
     {
-	[Embed(source="../../levels/JerrysTest.oel", mimeType="application/octet-stream")]
-	    private static const LEVEL_ONE:Class;
-	[Embed(source="../../RealSFX/Jamaican.mp3")]
-	    private static const JAMAICAN:Class;
-
-	private var jamaican:Sfx = new Sfx(JAMAICAN);
-	public var player:NewPlayer;
-	public var tileMap : Array;
-	public var rows : uint = 75;
-	public var columns : uint = 100;
-
-	override public function begin():void
-	{
-		tileMap = new Array(new Array(0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0),
+		[Embed(source = '../../levels/images/FiremanChar.png')]
+			private const FFMAN:Class;
+		public var sprPlayer:Spritemap = new Spritemap(FFMAN, 16, 16);
+		private var img:Image = Image.createCircle(8, 0xFFFFFF);
+		private var speed : Number = 100.0;
+		private var ppX : uint;
+		private var ppY : uint;
+		private var myX : uint;
+		private var myY : uint;
+		public var vx : Number = 0.0;
+		public var vy : Number = 0.0;
+		public var dead : Boolean = false;
+		private var myMap : Array;	
+		
+		public function FireFighter(newX:int, newY:int)
+		{
+			
+		/*myMap = new Array(new Array(0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0),
 								new Array(0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0),
 								new Array(0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0),
 								new Array(0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0),
@@ -106,92 +104,70 @@ package worlds
 								new Array(0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0),
 								new Array(0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0),
 								new Array(0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0));
-		
-	    add(new HUDright);
-	    add(new HUDleft);
-	    add(new Score);
-
-	    var rawData:ByteArray = new LEVEL_ONE;
-	    var dataString:String = rawData.readUTFBytes(rawData.length);
-
-	    var levelData:XML = new XML(dataString);
-	    
-	    var dataList:XMLList;
-	    var dataElement:XML;
-
-	    dataList = levelData.Roads.tile;
-	    for each(dataElement in dataList)
-	    {
-			add(new Road(dataElement.@x, dataElement.@y,
-			     dataElement.@tx, dataElement.@ty));
-			var tmpX : uint = int(dataElement.@x/16);
-			var tmpY : uint = int(dataElement.@y / 16);
-			tileMap[tmpY][tmpX] = 1;
-			tileMap[tmpY+1][tmpX] = 1;
-			tileMap[tmpY][tmpX+1] = 1;
-			tileMap[tmpY+1][tmpX+1] = 1;
-	    }
-
-	    dataList = levelData.Objects.buildingL;
-	    for each(dataElement in dataList)
-	    {
-		add(new Building(dataElement.@x, dataElement.@y, "buildingL"));
-	    }
-
-	    dataList = levelData.Objects.buildingM;
-	    for each(dataElement in dataList)
-	    {
-		add(new Building(dataElement.@x, dataElement.@y, "buildingM"));
-	    }
-
-	    dataList = levelData.Objects.buildingS;
-	    for each(dataElement in dataList)
-	    {
-		add(new Building(dataElement.@x, dataElement.@y, "buildingS"));
-	    }
-
-	    dataList = levelData.Objects.buildingS2h;
-	    for each(dataElement in dataList)
-	    {
-		add(new Building(dataElement.@x, dataElement.@y, "buildingS2h"));
-	    }
-
-	    dataList = levelData.Objects.buildingS2v;
-	    for each(dataElement in dataList)
-	    {
-		add(new Building(dataElement.@x, dataElement.@y, "buildingS2v"));
-	    }
-
-	    dataList = levelData.Objects.playerStart;
-	    for each(dataElement in dataList)
-	    {
-		player = new NewPlayer(dataElement.@x, dataElement.@y);
-		add(player);
-		add(new FireFighter(dataElement.@x, dataElement.@y));
-	    }
-	    jamaican.play();
-	}
-		public function remapMap():void
-		{
-			var rawData:ByteArray = new LEVEL_ONE;
-			var dataString:String = rawData.readUTFBytes(rawData.length);
-
-			var levelData:XML = new XML(dataString);
-			
-			var dataList:XMLList;
-			var dataElement:XML;
-
-			dataList = levelData.Roads.tile;
-			for each(dataElement in dataList)
-			{
-				var tmpX : uint = int(dataElement.@x/16);
-				var tmpY : uint = int(dataElement.@y / 16);
-				tileMap[tmpY][tmpX] = 1;
-				tileMap[tmpY+1][tmpX] = 1;
-				tileMap[tmpY][tmpX+1] = 1;
-				tileMap[tmpY+1][tmpX+1] = 1;
-			}
+			*/
+			myMap = WorldOne(FP.world).tileMap;
+								
+			this.x = newX;
+			this.y = newY;
+			graphic = sprPlayer;
+				
+			sprPlayer.add("stand", [0], 1);
+			sprPlayer.add("runRight", [1, 2, 3, 2, 1], 10);
+			sprPlayer.add("runLeft", [6, 5, 4, 5, 6], 10);
+			sprPlayer.add("runUp", [8, 9, 10, 9, 8], 10);
+			setHitbox(img.width-6, img.height-8);
+			this.originX -= 3;
+			this.originY -= 7;
+			type = "ffman";
 		}
-	
-    }
+
+		override public function update():void
+		{
+			sprPlayer.play("stand");
+			
+			ppX = Math.floor(WorldOne(FP.world).player.x / 16);
+			ppY = Math.floor(WorldOne(FP.world).player.y / 16);
+			myX = Math.floor(x / 16);
+			myY = Math.floor(y / 16);
+			
+			if (ppX > myX && WorldOne(FP.world).tileMap[myY][myX + 1] == 1)
+			{
+				x += 50 * FP.elapsed;
+			}
+			else if (ppX < myX && WorldOne(FP.world).tileMap[myY][myX - 1] == 1)
+			{
+				x -= 50 * FP.elapsed;
+			}
+			if (ppY > myY && WorldOne(FP.world).tileMap[myY + 1][myX] == 1)
+			{
+				y += 50 * FP.elapsed;
+			}
+			else if (ppY < myY && WorldOne(FP.world).tileMap[myY - 1][myX] == 1)
+			{
+				y -= 50 * FP.elapsed;
+			}
+			
+			myMap[myY][myX] = 0;
+						
+			if (myMap[myY][myX] == 0 && myMap[myY][myX + 1] == 1)
+			{
+				x += 50 * FP.elapsed;				
+			}
+			if (myMap[myY][myX] == 0 && myMap[myY][myX - 1] == 1)
+			{
+				x -= 50 * FP.elapsed;
+			}		
+			if (myMap[myY][myX] == 0 && myMap[myY+1][myX] == 1)
+			{
+				y += 50 * FP.elapsed;				
+			}
+			if (myMap[myY][myX] == 0 && myMap[myY-1][myX] == 1)
+			{
+				y -= 50 * FP.elapsed;
+			}
+			
+			if (myMap[myY + 1][myX] == 0 && myMap[myY - 1][myX] == 0 && myMap[myY][myX - 1] == 0 && myMap[myY][myX + 1] == 0)
+				WorldOne(FP.world).remapMap();
+		}
+	}
 }
