@@ -6,6 +6,7 @@ package entities
 	import net.flashpunk.Entity;
 	import net.flashpunk.graphics.Image;
 	import net.flashpunk.FP;
+	import net.flashpunk.Sfx;
 	
 	public class Building extends Entity
 	{
@@ -31,6 +32,11 @@ package entities
 	    [Embed(source = '../../levels/images/BuildingS2v_rub.png')]
 		private const BUILDING_S2_V_RUB:Class;
 
+	    [Embed(source='../../RealSfx/Explosion03.mp3')]
+		private const SMALL_EXPLOSION:Class;
+	    [Embed(source='../../RealSfx/Explosion05.mp3')]
+		private const BIG_EXPLOSION:Class;
+
 		private var lifeTotal : Number = 100.0;
 		private var degrader : Number = 0.0; //Takes life away from buildings
 		private var degraderInc : Number = 0.2; //Increase the damage being done to buildings when hit by match
@@ -48,7 +54,9 @@ package entities
 		private var burningTime : Number = 0.0;
 		private var incTimer : Number = 2.5; //Time it takes while on fire to add another emitter
 		private var chunks : uint = 1.0; //How many chunks break out when a building collapses
-		
+	    private var smallExplosion:Sfx = new Sfx(SMALL_EXPLOSION);
+	    private var bigExplosion:Sfx = new Sfx(BIG_EXPLOSION);
+
 	    public function Building(x:Number, y:Number, buildingType:String) 
 		{
 		    this.buildingType = buildingType;
@@ -138,18 +146,23 @@ package entities
 
 				switch (buildingType) {
 				case "buildingL":
+				    bigExplosion.play();
 				    buildingImage = new Image(BUILDING_L_RUB);
 				    break;
 				case "buildingM":
+				    bigExplosion.play();
 				    buildingImage = new Image(BUILDING_M_RUB);
 				    break;
 				case "buildingS":
+				    smallExplosion.play();
 				    buildingImage = new Image(BUILDING_S_RUB);
 				    break;
 				case "buildingS2h":
+				    smallExplosion.play();
 				    buildingImage = new Image(BUILDING_S2_H_RUB);
 				    break;
 				case "buildingS2v":
+				    smallExplosion.play();
 				    buildingImage = new Image(BUILDING_S2_V_RUB);
 				    break;
 				}
