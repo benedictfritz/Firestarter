@@ -7,7 +7,7 @@ package entities
 
     public class HUDright extends Entity
     {
-	[Embed(source='../../levels/images/rightsideItemsUI.png')]
+	[Embed(source='../../levels/images/rightsideMatchesUI.png')]
 	    private const RIGHT_HUD:Class;
 	private var img:Image = new Image(RIGHT_HUD);
 

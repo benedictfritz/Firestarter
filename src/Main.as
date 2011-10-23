@@ -26,7 +26,7 @@ package
 
 			theme.loop(0.5, 0);
 			jamaican.play(1, 0);
-			FP.console.enable();
+			//FP.console.enable();
 			FP.world = new Splash;
 		}
 	}

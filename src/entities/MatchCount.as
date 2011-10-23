@@ -45,8 +45,8 @@ package entities
 
 	override public function update():void
 	{
-	    this.x = FP.camera.x + 700;
-	    this.y = FP.camera.y + FP.screen.height - 30;
+	    this.x = FP.camera.x + 750;
+	    this.y = FP.camera.y + FP.screen.height - 32;
 	    text = new Text(String(count));
 	    text.color = 0xFFFFFF;
 	    text.size = 16;

@@ -18,6 +18,9 @@ package worlds
 		
 		private var fbi:Image = new Image(ARCADE);
 		
+		private var totalTime : Number = 0.0
+		private var displayTime : Number = 4.0;
+		
 		private var 
 	    titleText:Text,
 	    titleTextEntity:Entity,
@@ -27,14 +30,16 @@ package worlds
 		
 		public function Splash() 
 		{
-			this.addGraphic(fbi, 0, -125, 0);
-			fbi.scale *= 0.55;
+			this.addGraphic(fbi, 0, -153, -20);
+			fbi.scale *= 0.58;
 		}
 		
 		override public function update():void
 		{
-			if (Input.pressed(Key.SPACE))
-			FP.world = new Menu;
+			if (totalTime > displayTime)
+				FP.world = new Menu;
+				
+			totalTime += FP.elapsed;
 		}
 	}
 }
