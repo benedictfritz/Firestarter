@@ -49,6 +49,18 @@ package entities
 		world.camera.y = y - FP.screen.height / 2;
 		
 	    //////////////////////////////////////////////////////////////////
+	    //Keep player within
+		if (x > FP.screen.width + FP.screen.width - img.width)
+			x = FP.screen.width + FP.screen.width - img.width;
+		else if (x < -FP.screen.width/32 + img.width*2)
+			x = -FP.screen.width/32 + img.width*2;
+		if (y > FP.screen.height + FP.screen.height - img.height*2)
+			y = FP.screen.height + FP.screen.height - img.height*2;
+		else if (y < -FP.screen.height/32 + img.height*2)
+			y = -FP.screen.height / 32 + img.height * 2;
+		//////////////////////////////////////////////////////////////////
+			
+	    //////////////////////////////////////////////////////////////////
 	    //Set diagMov to true for diagonal movement
 	    var xSpeed:Number = 0;
 	    var ySpeed:Number = 0;
