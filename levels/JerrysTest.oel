@@ -673,5 +673,56 @@
     <buildingS2h x="1088" y="288"/>
     <buildingS x="1216" y="288"/>
     <playerStart x="864" y="608"/>
+    <matchSpawn x="80" y="80"/>
+    <matchSpawn x="352" y="80"/>
+    <matchSpawn x="80" y="288"/>
+    <matchSpawn x="352" y="288"/>
+    <matchSpawn x="80" y="496"/>
+    <matchSpawn x="352" y="496"/>
+    <matchSpawn x="592" y="528"/>
+    <matchSpawn x="336" y="816"/>
+    <matchSpawn x="320" y="832"/>
+    <matchSpawn x="576" y="1056"/>
+    <matchSpawn x="304" y="1056"/>
+    <matchSpawn x="832" y="1024"/>
+    <matchSpawn x="960" y="864"/>
+    <matchSpawn x="976" y="880"/>
+    <matchSpawn x="880" y="704"/>
+    <matchSpawn x="896" y="624"/>
+    <matchSpawn x="896" y="432"/>
+    <matchSpawn x="880" y="80"/>
+    <matchSpawn x="688" y="96"/>
+    <matchSpawn x="704" y="96"/>
+    <matchSpawn x="528" y="80"/>
+    <matchSpawn x="528" y="240"/>
+    <matchSpawn x="528" y="256"/>
+    <matchSpawn x="1264" y="176"/>
+    <matchSpawn x="1280" y="192"/>
+    <matchSpawn x="1456" y="80"/>
+    <matchSpawn x="1440" y="176"/>
+    <matchSpawn x="1280" y="368"/>
+    <matchSpawn x="1504" y="512"/>
+    <matchSpawn x="1520" y="528"/>
+    <matchSpawn x="1280" y="512"/>
+    <matchSpawn x="1296" y="528"/>
+    <matchSpawn x="1280" y="800"/>
+    <matchSpawn x="1296" y="816"/>
+    <matchSpawn x="1216" y="880"/>
+    <matchSpawn x="1232" y="1104"/>
+    <matchSpawn x="1392" y="976"/>
+    <matchSpawn x="1328" y="1040"/>
+    <matchSpawn x="1536" y="1056"/>
+    <matchSpawn x="576" y="752"/>
+    <matchSpawn x="16" y="752"/>
+    <matchSpawn x="848" y="240"/>
+    <matchSpawn x="1152" y="80"/>
+    <matchSpawn x="1072" y="368"/>
+    <matchSpawn x="1056" y="544"/>
+    <matchSpawn x="1008" y="544"/>
+    <matchSpawn x="1056" y="704"/>
+    <matchSpawn x="1040" y="1088"/>
+    <matchSpawn x="0" y="576"/>
+    <matchSpawn x="32" y="1040"/>
+    <matchSpawn x="32" y="1024"/>
   </Objects>
 </level>

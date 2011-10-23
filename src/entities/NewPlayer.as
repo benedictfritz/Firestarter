@@ -7,7 +7,7 @@ package entities
     import net.flashpunk.utils.Input;
     import net.flashpunk.utils.Key;
     import net.flashpunk.graphics.Spritemap;
-	import net.flashpunk.World;
+    import net.flashpunk.World;
     import entities.Match;
 
     import worlds.WorldOne;
@@ -98,8 +98,12 @@ package entities
 			
 			//Create a match when hitting space bar
 		    if (Input.pressed(Key.SPACE)) {
-			world.add(new Match(x+img.width/2, y+img.height/2, this));
-			ignite.play();
+			
+			if (WorldOne(world).matchCount.hasMatches()) {
+			    WorldOne(world).matchCount.decrementMatchCount();
+			    world.add(new Match(x+img.width/2, y+img.height/2, this));
+			    ignite.play();
+			}
 		    }
 		    
 		    xSpeed = vx * FP.elapsed;

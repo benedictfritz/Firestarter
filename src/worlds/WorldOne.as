@@ -1,6 +1,6 @@
 package worlds
 {
-	import entities.FireFighter;
+
     import flash.utils.ByteArray;
 
     import net.flashpunk.FP;
@@ -15,6 +15,9 @@ package worlds
     import entities.HUDleft;
     import entities.HUDright;
     import entities.Score;
+    import entities.MatchCount;
+    import entities.MatchSpawn;
+    import entities.FireFighter;
 
     public class WorldOne extends World
     {
@@ -24,6 +27,7 @@ package worlds
 	    private static const JAMAICAN:Class;
 
 	public var score:Score;
+	public var matchCount:MatchCount;
 	private var jamaican:Sfx = new Sfx(JAMAICAN);
 	public var player:NewPlayer;
 	public var tileMap : Array;
@@ -112,6 +116,8 @@ package worlds
 	    add(new HUDleft);
 	    score = new Score;
 	    add(score);
+	    matchCount = new MatchCount;
+	    add(matchCount);
 
 	    var rawData:ByteArray = new LEVEL_ONE;
 	    var dataString:String = rawData.readUTFBytes(rawData.length);
@@ -171,6 +177,13 @@ package worlds
 		add(player);
 		add(new FireFighter(dataElement.@x, dataElement.@y));
 	    }
+
+	    dataList = levelData.Objects.matchSpawn;
+	    for each(dataElement in dataList)
+	    {
+		add(new MatchSpawn(dataElement.@x, dataElement.@y));
+	    }
+
 	}
 		public function remapMap():void
 		{
