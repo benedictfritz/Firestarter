@@ -29,7 +29,10 @@ package entities
 	    sprBuildings.play(String(tX), false);
 
 	    FP.console.log(String(tX));
-
+		
+		/*setHitbox(img.width, img.height);
+		type = "road";*/
+			
 	    this.x = x;
 	    this.y = y;
 	}

@@ -33,7 +33,8 @@ package entities
 		private var emitterList : Array = new Array();
 		private var onFire : Boolean = false; //Is the building on fire
 		private var burningTime : Number = 0.0;
-		private var incTimer: Number = 2.5; //Time it takes while on fire to add another emitter
+		private var incTimer : Number = 2.5; //Time it takes while on fire to add another emitter
+		private var chunks : uint = 1.0; //How many chunks break out when a building collapses
 		
 	    public function Building(x:Number, y:Number, buildingType:String) 
 		{
@@ -43,23 +44,28 @@ package entities
 
 		    switch (buildingType) {
 		    case "buildingL":
-			lifeTotal = 400.0;
+			lifeTotal = 300.0;
+			chunks = 3;
 			buildingImage = new Image(BUILDING_L);
 			break;
 		    case "buildingM":
 			lifeTotal = 250.0;
+			chunks = 2;
 			buildingImage = new Image(BUILDING_M);
 			break;
 		    case "buildingS":
 			lifeTotal = 100.0;
+			chunks = 1;
 			buildingImage = new Image(BUILDING_S);
 			break;
 		    case "buildingS2h":
 			lifeTotal = 200.0;
+			chunks = 2;
 			buildingImage = new Image(BUILDING_S2_H);
 			break;
 		    case "buildingS2v":
 			lifeTotal = 200.0;
+			chunks = 2;
 			buildingImage = new Image(BUILDING_S2_V);
 			break;
 		    }
@@ -104,7 +110,9 @@ package entities
 			
 			if (lifeTotal <= 0)
 			{
-				world.add(new FireChunk(x + this.width / 2, y + this.height / 2, Math.floor(Math.random() * 4)));
+				world.add(new FireChunk(x + this.width / 2, y + this.height / 2));
+				world.add(new FireChunk(x + this.width / 2, y + this.height / 2));
+				world.add(new FireChunk(x + this.width / 2, y + this.height / 2));
 				for (var i:int = 0; i < fireCnt; i++)
 					world.remove(emitterList[i]);
 				world.remove(this);

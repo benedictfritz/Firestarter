@@ -25,6 +25,8 @@ package entities
 			graphic = img;		
 			
 			setHitbox(img.width, img.height);
+			originX += img.width / 2;
+			originY += img.height / 2;
 			type = "match";
 			
 			switch(creator.direction)
