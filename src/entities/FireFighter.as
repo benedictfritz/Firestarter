@@ -125,55 +125,62 @@ package entities
 
 		override public function update():void
 		{
-			sprPlayer.play("stand")
-			
-			ppX = Math.floor(WorldOne(FP.world).player.x / 16);
-			ppY = Math.floor(WorldOne(FP.world).player.y / 16);
-			myX = Math.floor(x / 16);
-			myY = Math.floor(y / 16);
-			
-			if (ppX > myX && WorldOne(FP.world).tileMap[myY][myX + 1] == 1)
+			if (!WorldOne(FP.world).player.dead)
 			{
-				x += 50 * FP.elapsed;
-			}
-			else if (ppX < myX && WorldOne(FP.world).tileMap[myY][myX - 1] == 1)
-			{
-				x -= 50 * FP.elapsed;
-			}
-			if (ppY > myY && WorldOne(FP.world).tileMap[myY + 1][myX] == 1)
-			{
-				y += 50 * FP.elapsed;
-			}
-			else if (ppY < myY && WorldOne(FP.world).tileMap[myY - 1][myX] == 1)
-			{
-				y -= 50 * FP.elapsed;
-			}
-			
-			myMap[myY][myX] = 0;
-						
-			if (myMap[myY][myX] == 0 && myMap[myY][myX + 1] == 1)
-			{
-				x += 50 * FP.elapsed;				
-			}
-			if (myMap[myY][myX] == 0 && myMap[myY][myX - 1] == 1)
-			{
-				x -= 50 * FP.elapsed;
-			}		
-			if (myMap[myY][myX] == 0 && myMap[myY+1][myX] == 1)
-			{
-				y += 50 * FP.elapsed;				
-			}
-			if (myMap[myY][myX] == 0 && myMap[myY-1][myX] == 1)
-			{
-				y -= 50 * FP.elapsed;
-			}
-			
-			if (myMap[myY + 1][myX] == 0 && myMap[myY - 1][myX] == 0 && myMap[myY][myX - 1] == 0 && myMap[myY][myX + 1] == 0)
-				WorldOne(FP.world).remapMap(myMap);
-
-			var player:NewPlayer = collide("player", x, y) as NewPlayer;
-			if (player) {
-			    player.dead = true;
+				sprPlayer.play("stand")
+				
+				ppX = Math.floor(WorldOne(FP.world).player.x / 16);
+				ppY = Math.floor(WorldOne(FP.world).player.y / 16);
+				myX = Math.floor(x / 16);
+				myY = Math.floor(y / 16);
+				
+				if (ppX > myX && WorldOne(FP.world).tileMap[myY][myX + 1] == 1)
+				{
+					x += 50 * FP.elapsed;
+				}
+				else if (ppX < myX && WorldOne(FP.world).tileMap[myY][myX - 1] == 1)
+				{
+					x -= 50 * FP.elapsed;
+				}
+				if (ppY > myY && WorldOne(FP.world).tileMap[myY + 1][myX] == 1)
+				{
+					y += 50 * FP.elapsed;
+				}
+				else if (ppY < myY && WorldOne(FP.world).tileMap[myY - 1][myX] == 1)
+				{
+					y -= 50 * FP.elapsed;
+				}
+				
+				myMap[myY][myX] = 0;
+							
+				if (myMap[myY][myX] == 0 && myMap[myY][myX + 1] == 1)
+				{
+					x += 50 * FP.elapsed;				
+				}
+				if (myMap[myY][myX] == 0 && myMap[myY][myX - 1] == 1)
+				{
+					x -= 50 * FP.elapsed;
+				}		
+				if (myMap[myY][myX] == 0 && myMap[myY+1][myX] == 1)
+				{
+					y += 50 * FP.elapsed;				
+				}
+				if (myMap[myY][myX] == 0 && myMap[myY-1][myX] == 1)
+				{
+					y -= 50 * FP.elapsed;
+				}
+				
+				if (myMap[myY + 1][myX] == 0 && myMap[myY - 1][myX] == 0 && myMap[myY][myX - 1] == 0 && myMap[myY][myX + 1] == 0)
+					WorldOne(FP.world).remapMap(myMap);
+				
+				if (WorldOne(FP.world).player.x <= x + 30 && WorldOne(FP.world).player.x >= x - 30 &&
+					WorldOne(FP.world).player.y <= y + 30 && WorldOne(FP.world).player.y >= y - 30)
+					moveTowards(WorldOne(FP.world).player.x, WorldOne(FP.world).player.y, speed*FP.elapsed);
+					
+				var player:NewPlayer = collide("player", x, y) as NewPlayer;
+				if (player) {
+					player.dead = true;
+				}
 			}
 		}
 	}
