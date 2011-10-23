@@ -183,7 +183,7 @@ package entities
 				    buildingImage = new Image(BUILDING_L_RUB);
 				    break;
 				case "buildingM":
-				    bigExplosion.play();
+				    smallExplosion.play();
 				    buildingImage = new Image(BUILDING_M_RUB);
 				    break;
 				case "buildingS":

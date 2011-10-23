@@ -3,6 +3,7 @@ package worlds
     import flash.utils.ByteArray;
 
     import net.flashpunk.FP;
+    import net.flashpunk.Sfx;
     import net.flashpunk.World;
     import net.flashpunk.Entity;
     import net.flashpunk.graphics.Text;
@@ -18,6 +19,10 @@ package worlds
     {
 	[Embed(source="../../levels/JerrysTest.oel", mimeType="application/octet-stream")]
 	    private static const LEVEL_ONE:Class;
+	[Embed(source="../../RealSFX/Jamaican.mp3")]
+	    private static const JAMAICAN:Class;
+
+	private var jamaican:Sfx = new Sfx(JAMAICAN);
 
 	override public function begin():void
 	{
@@ -75,6 +80,7 @@ package worlds
 	    {
 		add(new NewPlayer(dataElement.@x, dataElement.@y));
 	    }
+	    jamaican.play();
 	}
     }
 }

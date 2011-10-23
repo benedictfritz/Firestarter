@@ -1,6 +1,7 @@
 package entities
 {
     import net.flashpunk.Entity;
+    import net.flashpunk.Sfx;
     import net.flashpunk.graphics.Image;
     import net.flashpunk.FP;
     import net.flashpunk.utils.Input;
@@ -13,8 +14,12 @@ package entities
     {
 	[Embed(source = '../../levels/images/PlayerSprites.png')]
 	    private const PLAYER:Class;
+	[Embed(source = '../../RealSfx/FireIgnite02.mp3')]
+	    private const IGNITE:Class;
+
 	public var sprPlayer:Spritemap = new Spritemap(PLAYER, 16, 16);
 	private var img:Image = Image.createCircle(8, 0xFFFFFF);
+	private var ignite:Sfx = new Sfx(IGNITE);
 	private var speed : Number = 150.0;
 	private var diagMov : Boolean = true;
 	private var lastlastKey : int = 0;
@@ -90,8 +95,10 @@ package entities
 		    }
 			
 			//Create a match when hitting space bar
-			if (Input.pressed(Key.SPACE))
-				world.add(new Match(x+img.width/2, y+img.height/2, this));
+		    if (Input.pressed(Key.SPACE)) {
+			world.add(new Match(x+img.width/2, y+img.height/2, this));
+			ignite.play();
+		    }
 		    
 		    xSpeed = vx * FP.elapsed;
 		    ySpeed = vy * FP.elapsed;
