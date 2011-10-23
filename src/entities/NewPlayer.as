@@ -63,23 +63,31 @@ package entities
 	    if (diagMov)
 		{
 		    if (Input.check(Key.LEFT)) { 
+				direction = "LEFT";
 			vx = -speed;
 		    }
 		    else if (Input.check(Key.RIGHT)) { 
+				direction = "RIGHT";
 			vx = speed;
 		    }
 		    else {
 			vx = 0;
 		    }
 		    if (Input.check(Key.UP)) { 
+				direction = "UP";
 			vy = -speed;
 		    }
 		    else if (Input.check(Key.DOWN)) { 
+				direction = "DOWN";
 			vy = speed;
 		    }
 		    else {
 			vy = 0;
 		    }
+			
+			//Create a match when hitting space bar
+			if (Input.pressed(Key.SPACE))
+				world.add(new Match(x+img.width/2, y+img.height/2, this));
 		    
 		    xSpeed = vx * FP.elapsed;
 		    ySpeed = vy * FP.elapsed;
