@@ -451,5 +451,6 @@
     <buildingM x="608" y="1056"/>
     <buildingM x="736" y="1056"/>
     <buildingM x="864" y="896"/>
+    <playerStart x="576" y="496"/>
   </Objects>
 </level>
