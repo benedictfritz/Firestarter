@@ -31,6 +31,7 @@ package entities
 	    sprPlayer.add("stand", [0], 1);
 	    sprPlayer.add("runRight", [1, 2, 3, 2, 1], 10);
 	    sprPlayer.add("runLeft", [6, 5, 4, 5, 6], 10);
+	    sprPlayer.add("runUp", [8, 9, 10, 9, 8], 10);
 	    setHitbox(img.width-3, img.height-3);
 	    this.originX -= 2;
 	    type = "player";
@@ -131,14 +132,13 @@ package entities
 		    lastlastKey = Input.lastKey;
 				
 		//Apply the velocities
-		// x += vx * FP.elapsed;
-		// y += vy * FP.elapsed;
 		xSpeed = vx * FP.elapsed;
 		ySpeed = vy * FP.elapsed;
 	    }
 
 	    if (vx > 0 || vy > 0) { sprPlayer.play("runRight"); }
-	    else if (vx < 0 || vy < 0) { sprPlayer.play("runLeft"); }
+	    else if (vx < 0) { sprPlayer.play("runLeft"); }
+	    else if (vy < 0) { sprPlayer.play("runUp"); }
 	    else { sprPlayer.play("stand"); }
 
 	    // pixel-perfect horizontal collision

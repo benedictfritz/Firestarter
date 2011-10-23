@@ -17,9 +17,13 @@ package entities
 	    sprBuildings.add("64", [2], 1, false);
 	    sprBuildings.add("96", [3], 1, false);
 	    sprBuildings.add("128", [4], 1, false);
-		sprBuildings.add("160", [5], 1, false);
+	    sprBuildings.add("160", [5], 1, false);
 	    sprBuildings.add("192", [6], 1, false);
 	    sprBuildings.add("224", [7], 1, false);
+	    sprBuildings.add("256", [8], 1, false);
+	    sprBuildings.add("288", [9], 1, false);
+	    sprBuildings.add("320", [10], 1, false);
+	    sprBuildings.add("352", [11], 1, false);
 	    
 	    graphic=sprBuildings;
 	    sprBuildings.play(String(tX), false);
