@@ -33,8 +33,9 @@ package entities
 	    sprPlayer.add("runRight", [1, 2, 3, 2, 1], 10);
 	    sprPlayer.add("runLeft", [6, 5, 4, 5, 6], 10);
 	    sprPlayer.add("runUp", [8, 9, 10, 9, 8], 10);
-	    setHitbox(img.width-3, img.height-3);
-	    this.originX -= 2;
+	    setHitbox(img.width-6, img.height-8);
+	    this.originX -= 3;
+	    this.originY -= 7;
 	    type = "player";
 	}
 

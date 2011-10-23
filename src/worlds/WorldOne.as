@@ -12,6 +12,7 @@ package worlds
     import entities.NewPlayer;
     import entities.HUDleft;
     import entities.HUDright;
+    import entities.Score;
 
     public class WorldOne extends World
     {
@@ -22,6 +23,7 @@ package worlds
 	{
 	    add(new HUDright);
 	    add(new HUDleft);
+	    add(new Score);
 
 	    var rawData:ByteArray = new LEVEL_ONE;
 	    var dataString:String = rawData.readUTFBytes(rawData.length);
