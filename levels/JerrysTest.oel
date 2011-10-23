@@ -672,5 +672,6 @@
     <buildingS x="1024" y="288"/>
     <buildingS2h x="1088" y="288"/>
     <buildingS x="1216" y="288"/>
+    <playerStart x="864" y="608"/>
   </Objects>
 </level>
