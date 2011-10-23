@@ -1,6 +1,7 @@
 package worlds 
 {
     import net.flashpunk.FP;
+	import net.flashpunk.graphics.Image;
     import net.flashpunk.World;
     import net.flashpunk.Entity;
     import net.flashpunk.utils.Key;
@@ -12,23 +13,28 @@ package worlds
 	
     public class Menu extends World
     {
-	private var 
+		[Embed(source = '../../levels/images/Firestartermainmenu.png')]
+		private const MAINMENU:Class;
+		
+		private var mainMenu:Image = new Image(MAINMENU);
+		
+		private var 
 	    titleText:Text,
 	    titleTextEntity:Entity,
 	    titleScale:Number,
 	    startText:Text,
 	    startTextEntity:Entity;
 		
-	public function Menu() 
-	{
-	    Util.addCenteredText("Firestarter", this, 10, 3);
-	    Util.addCenteredText("[space] - start", this, FP.halfHeight);
-	}
+		public function Menu() 
+		{
+			Util.addCenteredText("Push Space Bar to Start", this, FP.halfHeight);
+			this.addGraphic(mainMenu, 20, 0, 0);
+		}
 		
-	override public function update():void
-	{
-	    if (Input.pressed(Key.SPACE))
-		FP.world = new TestWorld;
+		override public function update():void
+		{
+			if (Input.pressed(Key.SPACE))
+			FP.world = new WorldOne;
+		}
 	}
-    }
 }
