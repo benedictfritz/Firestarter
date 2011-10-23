@@ -7,9 +7,9 @@ package emitters
 	
 	public class FireParticle extends Entity
 	{
-		//private var randSq : uint = uint(Math.floor(Math.random() * 8) + 2);
-		//private var img:Image = Image.createRect(randSq,randSq, 0xFF0000);
-		private var img:Image = Image.createCircle(uint(Math.floor(Math.random() * 6.0) + 3), 0xFF3300);
+		private var randSq : uint = uint(Math.floor(Math.random() * 10) + 4);
+		private var img:Image = Image.createRect(randSq,randSq, 0xFF0000);
+		//private var img:Image = Image.createCircle(uint(Math.floor(Math.random() * 8.0) + 4), 0xFF3300);
 		private var vx : Number = 0.0;
 		private var vy : Number = -20.0;
 		//private var fadeAmt : Number = 0.025;

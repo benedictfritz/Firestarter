@@ -6,7 +6,7 @@ package entities
     import net.flashpunk.utils.Input;
     import net.flashpunk.utils.Key;
     import net.flashpunk.graphics.Spritemap;
-
+	import net.flashpunk.World;
     import entities.Match;
 	
     public class NewPlayer extends Entity
@@ -21,6 +21,7 @@ package entities
 	public var direction : String = "RIGHT";
 	public var vx : Number = 0.0;
 	public var vy : Number = 0.0;
+	public var dead : Boolean = false;
 		
 	public function NewPlayer(x:int, y:int)
 	{
@@ -40,24 +41,13 @@ package entities
 	{
 	    //////////////////////////////////////////////////////////////////
 	    //Keep camera within
-	    if (x > -FP.screen.width/2 && x < FP.screen.width)
+	    if (x > FP.screen.width/2 && x < FP.screen.width+FP.screen.width/2)
 		world.camera.x = x - FP.screen.width/2;
-	    if (y > -FP.screen.height/2 && y < FP.screen.height)
-		world.camera.y = y - FP.screen.height/2;
-			
-	    if (y < -FP.screen.height/2 + 10)
-		world.camera.y = -FP.screen.height;
-	    else if (y > FP.screen.height - 10)
-		world.camera.y = FP.screen.height / 2;
-				
-	    if (x < -FP.screen.width/2 + 10)
-		world.camera.x = -FP.screen.width;
-	    else if (x > FP.screen.width - 10)
-		world.camera.x = FP.screen.width/2;
+	    if (y > FP.screen.height/2 && y < FP.screen.height+FP.screen.height/2)
+		world.camera.y = y - FP.screen.height / 2;
+		
 	    //////////////////////////////////////////////////////////////////
-				
 	    //Set diagMov to true for diagonal movement
-
 	    var xSpeed:Number = 0;
 	    var ySpeed:Number = 0;
 	    if (diagMov)
@@ -154,6 +144,12 @@ package entities
 		    y += FP.sign(ySpeed);
 		}
 	    }
+		
+		if (dead)
+		{
+			FP.world.removeAll();
+			FP.world.begin();
+		}
 	}
     }
 }
