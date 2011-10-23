@@ -19,6 +19,8 @@ package entities
 		private const BUILDING_S2_H:Class;
 	    [Embed(source = '../../levels/images/BuildingS2v.png')]
 		private const BUILDING_S2_V:Class;
+		
+		private var buildingImage:Image;
 
 	    [Embed(source = '../../levels/images/BuildingL_rub.png')]
 		private const BUILDING_L_RUB:Class;
@@ -48,13 +50,12 @@ package entities
 		private var burningTime : Number = 0.0;
 		private var incTimer : Number = 2.5; //Time it takes while on fire to add another emitter
 		private var chunks : uint = 1.0; //How many chunks break out when a building collapses
+		private var burnStage : uint = 0.0;
 		
 	    public function Building(x:Number, y:Number, buildingType:String) 
 		{
 		    this.buildingType = buildingType;
 		    type="building";
-
-		    var buildingImage:Image;
 
 		    switch (buildingType) {
 		    case "buildingL":
@@ -107,7 +108,37 @@ package entities
 				emitterF = new FireEmitter(x + (Math.random() * this.width), y + (Math.random() * this.height));
 				emitterList.push(emitterF);
 				world.add(emitterF);	
-				fireCnt++;			
+				burnStage++;
+				switch(burnStage)
+				{
+					case 0:
+						break;
+					case 1:
+						buildingImage.color = 0xEEEEEE;
+						break;
+					case 2:
+						buildingImage.color = 0xCCCCCC;
+						break;
+					case 3:
+						buildingImage.color = 0xAAAAAA;
+						break;
+					case 4:
+						buildingImage.color = 0x999999;
+						break;
+					case 5:
+						buildingImage.color = 0x777777;
+						break;
+					case 6:
+						buildingImage.color = 0x555555;
+						break;
+					case 7:
+						buildingImage.color = 0x333333;
+						break;
+					case 8:
+						buildingImage.color = 0x222222;
+						break;
+				}
+				fireCnt++;
 			}
 			
 			if (match || fireC)
