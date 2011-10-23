@@ -10,6 +10,8 @@ package worlds
     import entities.Building;
     import entities.Road;
     import entities.NewPlayer;
+    import entities.HUDleft;
+    import entities.HUDright;
 
     public class WorldOne extends World
     {
@@ -18,6 +20,9 @@ package worlds
 
 	override public function begin():void
 	{
+	    add(new HUDright);
+	    add(new HUDleft);
+
 	    var rawData:ByteArray = new LEVEL_ONE;
 	    var dataString:String = rawData.readUTFBytes(rawData.length);
 
