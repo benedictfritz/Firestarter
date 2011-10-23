@@ -1,5 +1,6 @@
 package emitters
 {
+	import worlds.WorldOne;
 	import net.flashpunk.Entity;
 	import net.flashpunk.*;
 	
