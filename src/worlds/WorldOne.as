@@ -175,14 +175,18 @@ package worlds
 	    {
 		player = new NewPlayer(dataElement.@x, dataElement.@y);
 		add(player);
-			add(new FireFighter(dataElement.@x, dataElement.@y));
-			add(new FireFighter(dataElement.@x, dataElement.@y));
 	    }
 
 	    dataList = levelData.Objects.matchSpawn;
 	    for each(dataElement in dataList)
 	    {
 		add(new MatchSpawn(dataElement.@x, dataElement.@y));
+	    }
+
+	    dataList = levelData.Objects.firefighterSpawn;
+	    for each(dataElement in dataList)
+	    {
+		add(new FireFighter(dataElement.@x, dataElement.@y));
 	    }
 
 	}

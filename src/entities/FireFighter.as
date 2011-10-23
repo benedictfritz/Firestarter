@@ -10,6 +10,7 @@ package entities
 	import net.flashpunk.World;
 	import worlds.WorldOne;
     import entities.Match;
+    import entities.NewPlayer;
 	
     public class FireFighter extends Entity
     {
@@ -169,6 +170,11 @@ package entities
 			
 			if (myMap[myY + 1][myX] == 0 && myMap[myY - 1][myX] == 0 && myMap[myY][myX - 1] == 0 && myMap[myY][myX + 1] == 0)
 				WorldOne(FP.world).remapMap(myMap);
+
+			var player:NewPlayer = collide("player", x, y) as NewPlayer;
+			if (player) {
+			    player.dead = true;
+			}
 		}
 	}
 }

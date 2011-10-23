@@ -14,6 +14,7 @@
     <object name="buildingS2h" image="images/buildingS2h.png" height="64" width="128"/>
     <object name="buildingS2v" image="images/buildingS2v.png" height="128" width="64"/>
     <object name="matchSpawn" image="images/matchicon.png" height="16" width="16" />
+    <object name="firefighterSpawn" image="images/gascancircleicon.png" height="16" width="16" />
   </objects>
 
   <tilesets>

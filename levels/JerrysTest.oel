@@ -724,5 +724,12 @@
     <matchSpawn x="0" y="576"/>
     <matchSpawn x="32" y="1040"/>
     <matchSpawn x="32" y="1024"/>
+    <firefighterSpawn x="64" y="112"/>
+    <firefighterSpawn x="192" y="1024"/>
+    <firefighterSpawn x="1232" y="1088"/>
+    <firefighterSpawn x="1440" y="160"/>
+    <firefighterSpawn x="864" y="112"/>
+    <firefighterSpawn x="864" y="320"/>
+    <firefighterSpawn x="1296" y="640"/>
   </Objects>
 </level>
