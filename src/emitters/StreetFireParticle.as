@@ -14,7 +14,7 @@ package emitters
 		private var vy : Number = -20.0;
 		//private var fadeAmt : Number = 0.025;
 		private var totalTime : Number = 0.0;
-		private var shrinkAmt : Number = 0.02;
+		private var shrinkAmt : Number = 0.03;
 		
 		public function StreetFireParticle(newX:Number, newY:Number) 
 		{
