@@ -24,13 +24,10 @@ package entities
 		
 		public function FireChunk(newX:Number, newY:Number) 
 		{
-		    sprRubble.add("1", [0], 1, false);
-		    sprRubble.add("2", [1], 1, false);
-		    sprRubble.add("3", [2], 1, false);
-		    sprRubble.add("4", [3], 1, false);
+		    sprRubble.add("spin", [0, 1, 2, 3], 20, true);
 
 		    graphic = sprRubble;
-		    sprRubble.play(String(Math.random()*4));
+		    sprRubble.play("spin");
 
 		    x = newX-16/2;
 		    y = newY-16/2;

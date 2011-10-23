@@ -181,7 +181,6 @@ package entities
 			
 			if (Image(graphic).alpha <= 0.0)
 			{
-				FP.world.removeAll();
 				FP.world = new EndGame(WorldOne(FP.world).score.getScore());
 			}
 		}
