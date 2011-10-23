@@ -614,7 +614,6 @@
     <buildingM x="608" y="1056"/>
     <buildingM x="736" y="1056"/>
     <buildingM x="864" y="896"/>
-<<<<<<< HEAD
     <buildingL x="1024" y="896"/>
     <buildingS x="896" y="1056"/>
     <buildingS x="960" y="1056"/>
@@ -674,8 +673,5 @@
     <buildingS2h x="1088" y="288"/>
     <buildingS x="1216" y="288"/>
     <playerStart x="864" y="608"/>
-=======
-    <playerStart x="576" y="496"/>
->>>>>>> 613a0b81602c59a1c1e362a876cc4e2c68e2a13c
   </Objects>
 </level>
