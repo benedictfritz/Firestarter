@@ -23,6 +23,7 @@ package worlds
 	[Embed(source="../../RealSFX/Jamaican.mp3")]
 	    private static const JAMAICAN:Class;
 
+	public var score:Score;
 	private var jamaican:Sfx = new Sfx(JAMAICAN);
 	public var player:NewPlayer;
 	public var tileMap : Array;
@@ -109,7 +110,8 @@ package worlds
 		
 	    add(new HUDright);
 	    add(new HUDleft);
-	    add(new Score);
+	    score = new Score;
+	    add(score);
 
 	    var rawData:ByteArray = new LEVEL_ONE;
 	    var dataString:String = rawData.readUTFBytes(rawData.length);

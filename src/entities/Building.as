@@ -7,6 +7,8 @@ package entities
 	import net.flashpunk.graphics.Image;
 	import net.flashpunk.FP;
 	import net.flashpunk.Sfx;
+
+	import worlds.WorldOne;
 	
 	public class Building extends Entity
 	{
@@ -176,25 +178,30 @@ package entities
 
 				rubble = true;
 				var buildingImage:Image;
-
+				var scoreWorld:WorldOne = WorldOne(FP.world);
 				switch (buildingType) {
 				case "buildingL":
 				    bigExplosion.play();
+				    scoreWorld.score.incrementScore(100);
 				    buildingImage = new Image(BUILDING_L_RUB);
 				    break;
 				case "buildingM":
 				    smallExplosion.play();
+				    scoreWorld.score.incrementScore(50);
 				    buildingImage = new Image(BUILDING_M_RUB);
 				    break;
 				case "buildingS":
+				    scoreWorld.score.incrementScore(15);
 				    smallExplosion.play();
 				    buildingImage = new Image(BUILDING_S_RUB);
 				    break;
 				case "buildingS2h":
+				    scoreWorld.score.incrementScore(25);
 				    smallExplosion.play();
 				    buildingImage = new Image(BUILDING_S2_H_RUB);
 				    break;
 				case "buildingS2v":
+				    scoreWorld.score.incrementScore(25);
 				    smallExplosion.play();
 				    buildingImage = new Image(BUILDING_S2_V_RUB);
 				    break;
