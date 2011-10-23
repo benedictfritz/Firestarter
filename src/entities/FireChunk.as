@@ -1,7 +1,7 @@
 package entities 
 {
 	import emitters.FireEmitter;
-	import emitters.FireParticle;
+	import emitters.StreetFireEmitter;
 	import entities.NewPlayer;
 	import net.flashpunk.Entity;
 	import net.flashpunk.graphics.Image;
@@ -16,6 +16,7 @@ package entities
 		private var vx : Number = 0.0;
 		private var vy : Number = 0.0;
 		private var time : Number = 0.0;
+		private var ignited : Boolean = false;
 		
 		public function FireChunk(newX:Number, newY:Number) 
 		{
@@ -38,6 +39,13 @@ package entities
 			var col:NewPlayer = collide("player", x, y) as NewPlayer;
 			if (col)
 				col.dead = true;
+				
+			var road:Road = collide("road", x, y) as Road;
+			if (road && !ignited)
+			{
+				ignited = true;
+				world.add(new StreetFireEmitter(road.x+16, road.y+16));
+			}
 				
 			x += vx * FP.elapsed;
 			y += vy * FP.elapsed;

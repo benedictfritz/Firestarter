@@ -30,8 +30,8 @@ package entities
 
 	    FP.console.log(String(tX));
 		
-		/*setHitbox(img.width, img.height);
-		type = "road";*/
+		setHitbox(32, 32);
+		type = "road";
 			
 	    this.x = x;
 	    this.y = y;
