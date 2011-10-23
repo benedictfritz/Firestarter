@@ -3,8 +3,10 @@ package
 	import net.flashpunk.Engine;
 	import net.flashpunk.FP;
 	import net.flashpunk.Sfx;
+	import worlds.Splash;
 
 	import worlds.WorldOne;
+	import worlds.Menu;
 
 
 	[SWF(width="800", height="600")]
@@ -25,7 +27,7 @@ package
 			theme.loop(0.5, 0);
 			jamaican.play(1, 0);
 			FP.console.enable();
-			FP.world = new WorldOne;
+			FP.world = new Splash;
 		}
 	}
 }

@@ -72,7 +72,7 @@ package entities
 		    switch (buildingType) {
 		    case "buildingL":
 			lifeTotal = 300.0;
-			chunks = 3;
+			chunks = 8;
 			buildingImage = new Image(BUILDING_L);
 			break;
 		    case "buildingM":
