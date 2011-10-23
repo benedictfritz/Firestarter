@@ -5,11 +5,15 @@ package entities
 	import entities.NewPlayer;
 	import net.flashpunk.Entity;
 	import net.flashpunk.graphics.Image;
+	import net.flashpunk.graphics.Spritemap;
 	import net.flashpunk.FP;
 	
 	public class FireChunk extends Entity
 	{
-		private var img:Image = Image.createRect(16, 16, 0xFF0000);
+	    [Embed(source="../../levels/images/FlamingRubble16.png")]
+		private const RUBBLE:Class;
+
+		private var sprRubble:Spritemap = new Spritemap(RUBBLE, 16, 16);
 		private var lifeTime : Number = 1.0;
 		private var speed : Number = 75.0;
 		private var gravity : Number = 9.8;
@@ -20,15 +24,24 @@ package entities
 		
 		public function FireChunk(newX:Number, newY:Number) 
 		{
-			x = newX-img.width/2, y = newY-img.height/2;
+		    sprRubble.add("1", [0], 1, false);
+		    sprRubble.add("2", [1], 1, false);
+		    sprRubble.add("3", [2], 1, false);
+		    sprRubble.add("4", [3], 1, false);
+
+		    graphic = sprRubble;
+		    sprRubble.play(String(Math.random()*4));
+
+		    x = newX-16/2;
+		    y = newY-16/2;
+
+		    //x = newX-img.width/2, y = newY-img.height/2;
 			
-			graphic = img;		
+		    setHitbox(16, 16);
+		    type = "firechunk";
 			
-			setHitbox(img.width, img.height);
-			type = "firechunk";
-			
-			vx = (Math.random() * speed*2) - speed;
-			vy = (Math.random() * speed*2) - speed;
+		    vx = (Math.random() * speed*2) - speed;
+		    vy = (Math.random() * speed*2) - speed;
 		}
 		
 		override public function update():void
