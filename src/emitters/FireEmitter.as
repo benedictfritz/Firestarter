@@ -2,8 +2,6 @@ package emitters
 {
 	import net.flashpunk.Entity;
 	import net.flashpunk.*;
-	import net.flashpunk.graphics.Emitter;
-	import net.flashpunk.graphics.Image;
 	
 	public class FireEmitter extends Entity
 	{		

@@ -5,24 +5,24 @@ package emitters
 	import net.flashpunk.graphics.Image;
 	import net.flashpunk.FP;
 	
-	public class FireParticle extends Entity
+	public class StreetFireParticle extends Entity
 	{
 		//private var randSq : uint = uint(Math.floor(Math.random() * 10) + 4);
 		//private var img:Image = Image.createRect(randSq,randSq, 0xFF0000);
-		private var img:Image = Image.createCircle(uint(Math.floor(Math.random() * 8.0) + 4), 0xFF3300);
+		private var img:Image = Image.createCircle(uint(Math.floor(Math.random() * 6.0) + 2), 0xFF3300);
 		private var vx : Number = 0.0;
 		private var vy : Number = -20.0;
 		//private var fadeAmt : Number = 0.025;
 		private var totalTime : Number = 0.0;
-		private var shrinkAmt : Number = 0.015;
+		private var shrinkAmt : Number = 0.02;
 		
-		public function FireParticle(newX:Number, newY:Number) 
+		public function StreetFireParticle(newX:Number, newY:Number) 
 		{
 			x = newX-img.width/2, y = newY-img.height/2;
 			
 			graphic = img;	
 			
-			vx = Math.random() * 20 - 10;
+			vx = Math.random() * 20 + 10;
 		}
 		
 		override public function update():void 
